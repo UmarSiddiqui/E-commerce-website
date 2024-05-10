@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/checkout.css">
+	    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/product.css">
+	<link rel="stylesheet" href="css/form.css">
+    
+	<!-- Font-Awesome css file link  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	 
+</head>
+
+
+<body>
+<nav class="navbar"></nav>
+
+
+<div class="row">
+    <div class="container">
+      <form action="payment.html">
+		
+			<div class="form">
+        <h1 class="heading">checkout</h1>
+        <p class="text">delievery address</p>
+
+        <input type="text" id="address" placeholder="address">
+        <input type="text" id="street" placeholder="street">
+        <div class="three-input-container">
+            <input type="text" id="city" placeholder="city">
+            <input type="text" id="state" placeholder="state">
+            <input type="text" id="pincode" placeholder="pincode">
+        </div>
+        <input type="text" id="landmark" placeholder="landmark">
+    </div>        
+  </div>
+		
+<!-- Adding payment method -->
+ 
+    <div id="smart-button-container">
+      <div style="text-align: center;">
+      <div id="paypal-button-container"></div>
+       </div>
+     </div>
+     <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+     <script>
+  
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'paypal',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
+  
+</form>
+	
+	
+            
+</body>
+<footer></footer>
+
+<script src="js/nav.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/home.js"></script>
+<script src="js/product.js"></script>
+<script src="js/checkout.js"></script>
+
+</html>
