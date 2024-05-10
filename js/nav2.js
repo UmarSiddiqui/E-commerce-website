@@ -12,7 +12,7 @@ const createNav = () => {
                     <button class="search-btn">search</button>
                 </div>
 
-                <a href="logout.html">
+                <a href="Log-in.html">
                 <img src="images/logout.png" alt="" style="border-radius: 5px;border: solid black 1px;">
                 </a>
 

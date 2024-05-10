@@ -1,88 +1,74 @@
-
-//sign up page form validation
+// Sign up page form validation
 function onsubmitForm() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
-    var atEmail=email.indexOf("@");
-    var dotEmail=email.indexOf(".");
+    var atEmail = email.indexOf("@");
+    var dotEmail = email.indexOf(".");
     var password = document.getElementById("password").value;
-    var confirmpassword = document.getElementById("confirmpassword").value;
+    var confirmPassword = document.getElementById("confirmpassword").value;
     var phone = document.getElementById("phone").value;
     var address = document.getElementById("address").value;
     var country = document.getElementById("country").value;
 
-    //name validation
-    if (name == "") {//if name is empty
+    // Name validation
+    if (name == "") {
         alert("Please enter your name");
         return false;
     }
 
-    //validate email
-    if (email == "") {//if email is empty
-        alert("Please email must be filled out");
+    // Validate email
+    if (email == "") {
+        alert("Email must be filled out");
         return false;
-    }else if (atEmail == -1) {//if @ is not found
-        alert("@ sign is missing. Please enter a valid email");
+    } else if (atEmail == -1) {
+        alert("Email is missing '@'. Please enter a valid email");
         return false;
-    }else if (dotEmail == email-1) {//if . is not found
-        alert("Dot is not accepatable at the end.Please enter a valid email");
-    return false;
-    }
-
-    //password validation
-    if (password == "") {//if password is empty
-        alert("Please password must be filled out");
+    } else if (dotEmail == email.length - 1 || dotEmail == -1 || dotEmail < atEmail) {
+        alert("Please enter a valid email address");
         return false;
     }
+    
 
-     if (confirmpassword == "") {//if confirm password is empty
-        alert("Please confirm password must be filled out");
-        return false;
-
-    }else if(password!=confirmpassword){//password and confirmpassword must be same
-        alert("Password and confirm password must be same");
+    // Password validation
+    if (password == "") {
+        alert("Password must be filled out");
         return false;
     }
 
-    //phone number validation
+    if (confirmPassword == "") {
+        alert("Confirm password must be filled out");
+        return false;
+    } else if (password != confirmPassword) {
+        alert("Password and confirm password must be the same");
+        return false;
+    }
+
+    // Phone number validation
     if (phone == "") {
-        alert("Please enter your phone number");//if phone number is empty
+        alert("Please enter your phone number");
         return false;
-    } else if (phone.length !=10) {//phone number must be 10 digits
-        alert("Please enter valid phone number");
-        return false;
-    }else if (isNaN(phone)) {//phone number must be numeric
-        alert("Please enter valid phone number");
-        return false;
-    }else if (phone.charAt(0)!=0) {//phone number must start with 0
-        alert("Please enter valid phone number");
+    } else if (phone.length != 10 || isNaN(phone) || phone.charAt(0) != "0") {
+        alert("Please enter a valid phone number starting with '0' and containing 10 digits");
         return false;
     }
 
-
-    //address validation
-    if (address == "") {               //if address is empty
+    // Address validation
+    if (address == "") {
         alert("Please enter your address");
         return false;
-     } else if (address.length > 50) {    //address must be less than 50 characters
-        alert("Please enter valid address");
+    } else if (address.length > 50) {
+        alert("Address must be less than 50 characters");
         return false;
     }
 
-
-    //country validation
-    if (country == "") {          //if country is empty
-        alert("Please country must be filled out");
+    // Country validation
+    if (country == "") {
+        alert("Country must be filled out");
         return false;
-    }else if (country.length > 30 ) {  //country must be less than 20 characters
-        alert("Please enter valid country name ");
+    } else if (country.length > 30) {
+        alert("Country name must be less than 30 characters");
         return false;
-		}
-alert (“Form Submit Successfully”);
-}
-}
+    }
 
+    alert("Form submitted successfully");
 }
-
-//login page form validation
-// function onsubmitForm() {
