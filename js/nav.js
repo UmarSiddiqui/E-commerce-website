@@ -3,7 +3,7 @@ const createNav = () => {
 
     nav.innerHTML = `
         <div class="nav">
-		<a href="index.php">
+		<a href="index.html">
 		<img src="images/logo.png" class="brand-logo" alt="">
 		</a>
             <div class="nav-items">
@@ -12,7 +12,7 @@ const createNav = () => {
                     <button class="search-btn">search</button>
                 </div>
         
-                <a href="signup.php">
+                <a href="signup.html">
                 <img src="images/Account.png" alt="" style="border-radius: 5px;border: solid black 1px;">
                 </a>
 
