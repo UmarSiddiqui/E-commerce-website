@@ -1,3 +1,7 @@
+header {
+  text-align: center;
+}
+
 .products-container {
   max-width: 650px;
   justify-content: space-around;
